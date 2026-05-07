@@ -1,0 +1,17 @@
+# Initial standard requirements, will update if more are required
+
+langchain==0.1.20
+langchain-openai==0.1.6
+langchain-community==0.0.38
+openai==1.14.0
+faiss-cpu==1.7.4
+sentence-transformers==2.6.1
+pypdf==4.1.0
+python-dotenv==1.0.1
+tiktoken==0.6.0
+pydantic==2.6.4
+pytest==8.1.1
+pytest-asyncio==0.23.6
+tqdm==4.66.2
+numpy==1.26.4
+pandas==2.2.1
