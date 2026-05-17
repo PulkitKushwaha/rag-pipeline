@@ -4,5 +4,11 @@
 
 from src.retrieval.vector_store import FAISSVectorStore
 from src.retrieval.retriever import BaseRetriever, SimilarityRetriever
+from src.retrieval.hyde import HyDERetriever
  
-__all__ = ["FAISSVectorStore", "BaseRetriever", "SimilarityRetriever"]
+__all__ = [
+    "FAISSVectorStore",
+    "BaseRetriever",
+    "SimilarityRetriever",
+    "HyDERetriever"
+]
