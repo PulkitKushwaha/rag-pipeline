@@ -11,6 +11,13 @@ from src.retrieval.reranker import (
     MockReranker,
     TwoStageRetriever
 )
+from src.retrieval.metadata_filter import (
+    FilterCondition,
+    MetadataFilter,
+    AccessLevelFilter,
+    DepartmentFilter,
+    RecencyFilter
+)
  
 __all__ = [
     "FAISSVectorStore",
@@ -20,5 +27,10 @@ __all__ = [
     "BaseReranker",
     "CrossEncoderReranker",
     "MockReranker",
-    "TwoStageRetriever"
+    "TwoStageRetriever",
+    "FilterCondition",
+    "MetadataFilter",
+    "AccessLevelFilter",
+    "DepartmentFilter",
+    "RecencyFilter"
 ]
