@@ -1,0 +1,130 @@
+{
+  "run_id": "baseline_20240315_143022",
+  "timestamp": "2024-03-15T14:30:22",
+  "pipeline_config": {
+    "chunking_strategy": "recursive",
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "retrieval_strategy": "similarity",
+    "embedding_model": "text-embedding-3-small",
+    "llm_model": "gpt-4",
+    "retrieval_k": 5
+  },
+  "summary": {
+    "num_samples": 30,
+    "metrics_evaluated": [
+      "faithfulness",
+      "answer_relevancy",
+      "context_precision",
+      "context_recall"
+    ],
+    "overall_score": 0.7142,
+    "metric_averages": {
+      "faithfulness": 0.7823,
+      "answer_relevancy": 0.7654,
+      "context_precision": 0.6891,
+      "context_recall": 0.6201
+    },
+    "passed": {
+      "faithfulness": true,
+      "answer_relevancy": true,
+      "context_precision": false,
+      "context_recall": false
+    }
+  },
+  "per_category_scores": {
+    "factual": {
+      "faithfulness": 0.9120,
+      "answer_relevancy": 0.8934,
+      "context_precision": 0.8210,
+      "context_recall": 0.8456,
+      "sample_count": 5
+    },
+    "multi_hop": {
+      "faithfulness": 0.7234,
+      "answer_relevancy": 0.7012,
+      "context_precision": 0.5891,
+      "context_recall": 0.4923,
+      "sample_count": 5
+    },
+    "summarization": {
+      "faithfulness": 0.8123,
+      "answer_relevancy": 0.7890,
+      "context_precision": 0.7234,
+      "context_recall": 0.6789,
+      "sample_count": 3
+    },
+    "comparison": {
+      "faithfulness": 0.7567,
+      "answer_relevancy": 0.7234,
+      "context_precision": 0.6456,
+      "context_recall": 0.5678,
+      "sample_count": 3
+    },
+    "negative": {
+      "faithfulness": 0.8012,
+      "answer_relevancy": 0.7823,
+      "context_precision": 0.7012,
+      "context_recall": 0.6234,
+      "sample_count": 4
+    },
+    "adversarial": {
+      "faithfulness": 0.6234,
+      "answer_relevancy": 0.6012,
+      "context_precision": 0.5234,
+      "context_recall": 0.4567,
+      "sample_count": 3
+    },
+    "out_of_scope": {
+      "faithfulness": 0.7890,
+      "answer_relevancy": 0.7234,
+      "context_precision": 0.6789,
+      "context_recall": 0.5890,
+      "sample_count": 2
+    },
+    "ambiguous": {
+      "faithfulness": 0.6789,
+      "answer_relevancy": 0.6456,
+      "context_precision": 0.5678,
+      "context_recall": 0.4890,
+      "sample_count": 2
+    },
+    "technical": {
+      "faithfulness": 0.7456,
+      "answer_relevancy": 0.7234,
+      "context_precision": 0.6234,
+      "context_recall": 0.5678,
+      "sample_count": 3
+    }
+  },
+  "notable_failures": [
+    {
+      "question_id": "q006",
+      "category": "multi_hop",
+      "issue": "context_recall",
+      "score": 0.3333,
+      "diagnosis": "Multi-hop question requires combining shipping and return policy. Recursive chunker split related content across chunk boundaries. Retriever returned shipping chunks but missed return policy chunks."
+    },
+    {
+      "question_id": "q021",
+      "category": "adversarial",
+      "issue": "faithfulness",
+      "score": 0.4000,
+      "diagnosis": "False premise in question ('free shipping on all orders') caused LLM to partially affirm the false claim rather than clearly correcting it. Generated answer not fully grounded in retrieved context."
+    },
+    {
+      "question_id": "q026",
+      "category": "ambiguous",
+      "issue": "answer_relevancy",
+      "score": 0.4234,
+      "diagnosis": "Ambiguous query 'How long does it take?': pipeline retrieved shipping chunks only. Did not retrieve return processing or order processing timeframes. Answer addressed one interpretation but not others."
+    },
+    {
+      "question_id": "q008",
+      "category": "multi_hop",
+      "issue": "context_recall",
+      "score": 0.3333,
+      "diagnosis": "Calculation question requires combining item price, shipping cost, and warranty pricing from three separate document sections. Only shipping section retrieved. Calculation incomplete."
+    }
+  ]
+}
